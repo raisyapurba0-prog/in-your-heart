@@ -1,43 +1,43 @@
 
 const photos = [
     {
-        src: "assets/foto/foto1.jpg",
+        src: "foto1.jpg",
         caption: "Kece abis, nggak ada lawan."
     },
     {
-        src: "assets/foto/foto2.jpg",
+        src: "foto2.jpg",
         caption: "Wih, cakep juga orang ini."
     },
     {
-        src: "assets/foto/foto3.jpg",
+        src: "foto3.jpg",
         caption: "Ini mah juara."
     },
     {
-        src: "assets/foto/foto4.jpg",
+        src: "foto4.jpg",
         caption: "Gantengnya nggak main-main."
     },
     {
-        src: "assets/foto/foto5.jpg",
+        src: "foto5.jpg",
         caption: "Aura bintang utama."
     },
     {
-        src: "assets/foto/foto6.jpg",
+        src: "foto6.jpg",
         caption: "Waduh, keren betul."
     },
     {
-        src: "assets/foto/foto7.jpg",
+        src: "foto7.jpg",
         caption: "Paket lengkap, nih."
     },
     {
-        src: "assets/foto/foto8.jpg",
+        src: "foto8.jpg",
         caption: "Senyumnya boleh juga."
     },
     {
-        src: "assets/foto/foto9.jpg",
+        src: "foto9.jpg",
         caption: "Fix, salah satu favorit."
     },
     {
-        src: "assets/foto/foto10.jpg",
+        src: "foto10.jpg",
         caption: "Penutup yang sangat meyakinkan. WKWK."
     }
 ];
@@ -56,19 +56,16 @@ let currentPhoto = 0;
 let transitionTimer;
 
 function showPhoto(index) {
-
     const photo = photos[index];
 
     clearTimeout(transitionTimer);
 
-    // Sembunyikan tombol lanjut selama belum di foto terakhir
     continueButton.hidden = true;
 
     galleryImage.style.opacity = "0";
     galleryImage.style.transform = "scale(0.97)";
 
     transitionTimer = setTimeout(function () {
-
         galleryImage.onload = function () {
             galleryImage.style.opacity = "1";
             galleryImage.style.transform = "scale(1)";
@@ -77,7 +74,6 @@ function showPhoto(index) {
         galleryImage.onerror = function () {
             galleryImage.style.opacity = "1";
             galleryImage.style.transform = "scale(1)";
-
             galleryCaption.textContent =
                 "Foto belum ditemukan. Periksa nama dan lokasi file.";
         };
@@ -96,32 +92,26 @@ function showPhoto(index) {
         previousButton.disabled = index === 0;
         nextButton.disabled = index === photos.length - 1;
 
-        // Tampilkan tombol lanjut pada foto ke-10
         if (index === photos.length - 1) {
             continueButton.hidden = false;
         }
-
     }, 350);
 }
 
 // FOTO SEBELUMNYA
 previousButton.addEventListener("click", function () {
-
     if (currentPhoto > 0) {
         currentPhoto--;
         showPhoto(currentPhoto);
     }
-
 });
 
 // FOTO BERIKUTNYA
 nextButton.addEventListener("click", function () {
-
     if (currentPhoto < photos.length - 1) {
         currentPhoto++;
         showPhoto(currentPhoto);
     }
-
 });
 
 // TOMBOL LANJUT KE MUSIK
